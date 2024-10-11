@@ -6,6 +6,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.typescript" },
+  { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
   -- import/override with your plugins folder
 }
