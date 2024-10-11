@@ -1,3 +1,4 @@
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 -- Customize Mason plugins
 
 ---@type LazySpec
@@ -9,7 +10,6 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "ts_ls",
         -- add more arguments for adding more language servers
       },
     },
@@ -32,8 +32,6 @@ return {
     opts = {
       ensure_installed = {
         "python",
-        "typescript",
-        "javascript",
         -- add more arguments for adding more debuggers
       },
     },
