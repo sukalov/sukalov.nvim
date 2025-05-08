@@ -27,7 +27,12 @@ return {
   { "max397574/better-escape.nvim", enabled = true },
 
   -- Adapter for russian keyboard
-  { "aveplen/ruscmd.nvim", enabled = true },
+  { 
+    "aveplen/ruscmd.nvim", 
+    lazy = false,
+    priority = 1000,
+    config = true,
+  },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
