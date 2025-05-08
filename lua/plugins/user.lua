@@ -18,13 +18,16 @@ return {
     "goolord/alpha-nvim",
     opts = function(_, opts)
       -- customize the dashboard header
-      opts.section.header.val = {""}
+      opts.section.header.val = { "" }
       return opts
     end,
   },
 
---  You can disable default plugins as follows:
+  --  You can disable default plugins as follows:
   { "max397574/better-escape.nvim", enabled = true },
+
+  -- Adapter for russian keyboard
+  { "aveplen/ruscmd.nvim", enabled = true },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
