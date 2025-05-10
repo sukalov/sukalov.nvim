@@ -23,12 +23,42 @@ return {
     end,
   },
 
-  --  You can disable default plugins as follows:
-  { "max397574/better-escape.nvim", enabled = true },
+  {
+    "max397574/better-escape.nvim",
+    enabled = true,
+    opts = {
+      mappings = {
+        -- 'i' for Insert mode mappings
+        i = {
+          j = {
+            k = "<Esc>",
+          },
+          k = {
+            j = "<Esc>",
+          },
+          -- Your Cyrillic mappings
+          ["о"] = {
+            ["л"] = "<Esc>", -- Map 'ол' to Escape
+          },
+          ["л"] = {
+            ["о"] = "<Esc>", -- Map 'ло' to Escape
+          },
+        },
+        -- You can add mappings for other modes if the plugin supports them (e.g., c for command mode)
+        -- c = {
+        --   j = {
+        --     k = "<C-c>",
+        --   },
+        -- },
+      },
+      -- Optional: Set 'default_mappings' to 'false' if you want to disable the plugin's built-in 'jk' and 'jj' mappings and only use your custom ones.
+      -- default_mappings = false,
+    },
+  },
 
   -- Adapter for russian keyboard
-  { 
-    "aveplen/ruscmd.nvim", 
+  {
+    "aveplen/ruscmd.nvim",
     lazy = false,
     priority = 1000,
     config = true,
