@@ -21,7 +21,7 @@ return {
     ---@type snacks.Config
     opts = {
       bigfile = { enabled = true },
-      dashboard = { enabled = true, preset = { header = false} },
+      dashboard = { enabled = true, preset = { header = false } },
       explorer = { enabled = true },
       indent = { enabled = true },
       input = { enabled = true },
@@ -35,6 +35,11 @@ return {
     },
   },
 
+  {
+    "augmentcode/augment.vim",
+    config = function() vim.g.augment_workspace_folders = { "/Users/matvey/Documents/mktour" } end,
+  },
+
   { "aveplen/ruscmd.nvim", config = true },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
@@ -45,6 +50,26 @@ return {
       -- add more custom luasnip configuration such as filetype extend or custom snippets
       local luasnip = require "luasnip"
       luasnip.filetype_extend("javascript", { "javascriptreact" })
+    end,
+  },
+
+  {
+    "nvimtools/none-ls.nvim",
+    opts = function(_, opts)
+      -- opts variable is the default configuration table for the setup function call
+      local null_ls = require "null-ls"
+
+      -- Check supported formatters and linters
+      -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+      -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+
+      -- Only insert new sources, do not replace the existing ones
+      -- (If you wish to replace, use `opts.sources = {}` instead of the `list_insert_unique` function)
+      opts.sources = {
+        -- Set a formatter
+        -- null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.prettier,
+      }
     end,
   },
 }

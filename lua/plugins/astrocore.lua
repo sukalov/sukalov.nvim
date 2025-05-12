@@ -61,11 +61,17 @@ return {
         },
 
         -- tables with just a `desc` key will be registered with which-key if it's installed
-        -- this is useful for naming menus
-        -- ["<Leader>b"] = { desc = "Buffers" },
+        ["<Leader>a"] = { desc = "Augment Code" },
+
+        ["<Leader>ac"] = { "<cmd>Augment chat<CR>", desc = "Augment chat" },
+        ["<Leader>an"] = { "<cmd>Augment chat-new<CR>", desc = "Start new chat" },
+        ["<Leader>at"] = { "<cmd>Augment chat-toggle<CR>", desc = "Toggle chat panel" },
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+      },
+      v = {
+        ["<Leader>ac"] = { "<cmd>Augment chat<CR>", desc = "Augment chat" },
       },
     },
   },
