@@ -18,7 +18,6 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    ---@type snacks.Config
     opts = {
       bigfile = { enabled = true },
       dashboard = { enabled = true, preset = { header = false } },
@@ -38,6 +37,7 @@ return {
   {
     "augmentcode/augment.vim",
     config = function() vim.g.augment_workspace_folders = { "/Users/matvey/Documents/mktour" } end,
+    enabled = false,
   },
 
   { "aveplen/ruscmd.nvim", config = true },

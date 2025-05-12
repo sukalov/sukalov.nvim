@@ -52,6 +52,7 @@
   "ruscmd.nvim": { "branch": "main", "commit": "da3b3d4cf86b1e8e6495713f2ee3223d7cc9a53f" },
   "smart-splits.nvim": { "branch": "master", "commit": "ddb23c1a1cf1507bda487cda7f6e4690965ef9f5" },
   "snacks.nvim": { "branch": "main", "commit": "5eac729fa290248acfe10916d92a5ed5e5c0f9ed" },
+  "supermaven-nvim": { "branch": "main", "commit": "07d20fce48a5629686aefb0a7cd4b25e33947d50" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
   "tsc.nvim": { "branch": "main", "commit": "5bd25bb5c399b6dc5c00392ade6ac6198534b53a" },
