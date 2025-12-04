@@ -61,7 +61,10 @@ return {
         },
 
         -- tables with just a `desc` key will be registered with which-key if it's installed
-        ["<Leader>a"] = { desc = "Augment Code" },
+        ["<Leader>o"] = { desc = "OpenCode" },
+        
+        -- Override AstroNvim's default <leader>o mapping for neo-tree
+        ["<Leader>e"] = { "<Cmd>Neotree toggle<CR>", desc = "Toggle Explorer" },
 
         ["<Leader>ac"] = { "<cmd>Augment chat<CR>", desc = "Augment chat" },
         ["<Leader>an"] = { "<cmd>Augment chat-new<CR>", desc = "Start new chat" },

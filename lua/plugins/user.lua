@@ -31,44 +31,50 @@ return {
       scroll = { enabled = true },
       statuscolumn = { enabled = true },
       words = { enabled = true },
+},
+  },
+  {
+    "NickvanDyke/opencode.nvim",
+    dependencies = {
+      "folke/snacks.nvim",
     },
-  },
-
-  {
-    "augmentcode/augment.vim",
-    config = function() vim.g.augment_workspace_folders = { "/Users/matvey/Documents/mktour" } end,
-    enabled = false,
-  },
-
-  { "aveplen/ruscmd.nvim", config = true },
-
-  -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
-  {
-    "L3MON4D3/LuaSnip",
-    config = function(plugin, opts)
-      require "astronvim.plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
-      -- add more custom luasnip configuration such as filetype extend or custom snippets
-      local luasnip = require "luasnip"
-      luasnip.filetype_extend("javascript", { "javascriptreact" })
-    end,
-  },
-
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      -- opts variable is the default configuration table for the setup function call
-      local null_ls = require "null-ls"
-
-      -- Check supported formatters and linters
-      -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-      -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-
-      -- Only insert new sources, do not replace the existing ones
-      -- (If you wish to replace, use `opts.sources = {}` instead of the `list_insert_unique` function)
-      opts.sources = {
-        -- Set a formatter
-        -- null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.prettier,
+    keys = {
+      -- Recommended keymaps
+      { '<leader>oA', function() require('opencode').ask() end, desc = 'Ask opencode', },
+      { '<leader>oa', function() require('opencode').ask('@cursor: ') end, desc = 'Ask opencode about this', mode = 'n', },
+      { '<leader>oa', function() require('opencode').ask('@selection: ') end, desc = 'Ask opencode about selection', mode = 'v', },
+      { '<leader>ot', function() require('opencode').toggle() end, desc = 'Toggle embedded opencode', },
+      { '<leader>on', function() require('opencode').command('session_new') end, desc = 'New session', },
+      { '<leader>oy', function() require('opencode').command('messages_copy') end, desc = 'Copy last message', },
+      { '<S-C-u>',    function() require('opencode').command('messages_half_page_up') end, desc = 'Scroll messages up', },
+      { '<S-C-d>',    function() require('opencode').command('messages_half_page_down') end, desc = 'Scroll messages down', },
+      { '<leader>op', function() require('opencode').select_prompt() end, desc = 'Select prompt', mode = { 'n', 'v', }, },
+      -- Example: keymap for custom prompt
+      { '<leader>oe', function() require('opencode').prompt("Explain @cursor and its context") end, desc = "Explain code near cursor", },
+    },
+    config = function()
+      -- Required for `opts.events.reload`.
+      vim.o.autoread = true
+      
+      -- Configure opencode provider
+      vim.g.opencode_opts = {
+        provider = {
+          cmd = "opencode",
+          enabled = "snacks",
+          snacks = {
+            auto_close = true,
+            win = {
+              position = "right",
+              enter = false,
+              wo = {
+                winbar = "",
+              },
+              bo = {
+                filetype = "opencode_terminal",
+              },
+            },
+          },
+        },
       }
     end,
   },
