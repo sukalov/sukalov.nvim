@@ -61,20 +61,31 @@ return {
         },
 
         -- tables with just a `desc` key will be registered with which-key if it's installed
-        ["<Leader>o"] = { desc = "OpenCode" },
-        
-        -- Override AstroNvim's default <leader>o mapping for neo-tree
-        ["<Leader>e"] = { "<Cmd>Neotree toggle<CR>", desc = "Toggle Explorer" },
+        ["<Leader>o"] = false,
 
         ["<Leader>ac"] = { "<cmd>Augment chat<CR>", desc = "Augment chat" },
         ["<Leader>an"] = { "<cmd>Augment chat-new<CR>", desc = "Start new chat" },
         ["<Leader>at"] = { "<cmd>Augment chat-toggle<CR>", desc = "Toggle chat panel" },
+
+        -- OpenCode mappings
+        ["<leader>oA"] = { function() require("opencode").ask() end, desc = "Ask opencode" },
+        ["<leader>oa"] = { function() require("opencode").ask "@cursor: " end, desc = "Ask opencode about this" },
+        ["<leader>ot"] = { function() require("opencode").toggle() end, desc = "Toggle embedded opencode" },
+        ["<leader>to"] = { function() require("opencode").toggle() end, desc = "Toggle embedded opencode" },
+        ["<leader>on"] = { function() require("opencode").command "session.new" end, desc = "New session" },
+        ["<leader>oy"] = { function() require("opencode").command "session.share" end, desc = "Share session" },
+        ["<S-C-u>"] = { function() require("opencode").command "session.half.page.up" end, desc = "Scroll messages up" },
+        ["<S-C-d>"] = { function() require("opencode").command "session.half.page.down" end, desc = "Scroll messages down" },
+        ["<leader>op"] = { function() require("opencode").select() end, desc = "Select prompt" },
+        ["<leader>oe"] = { function() require("opencode").prompt "explain" end, desc = "Explain code near cursor" },
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
       },
       v = {
         ["<Leader>ac"] = { "<cmd>Augment chat<CR>", desc = "Augment chat" },
+        ["<leader>oa"] = { function() require("opencode").ask "@selection: " end, desc = "Ask opencode about selection" },
+        ["<leader>op"] = { function() require("opencode").select() end, desc = "Select prompt" },
       },
     },
   },
